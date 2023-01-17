@@ -20,8 +20,13 @@ class AnuncioFactory extends Factory
      protected $model = Anuncio::class;
     public function definition()
     {
-        return [
         
+        return [
+            'titulo' => fake()->titulo(),
+            'preco' => Str::random([5,100]),
+            'descricao' => fake()->descricao(),
+            'estado'=> $this->faker->randomElement(['usado','novo']),
+           
         ];
     }
 }

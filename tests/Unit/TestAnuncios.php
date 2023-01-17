@@ -14,6 +14,7 @@ class AnuncioControllerTest extends TestCase
 {
     use RefreshDatabase;
 
+    
     /**
      * Testa se o index da função retorna uma view.
      *
@@ -47,9 +48,9 @@ class AnuncioControllerTest extends TestCase
      */
     public function testStore()
     {
-        $user = factory(User::class)->create();
+        $anuncio = factory(Anuncio::class)->create();
 
-        $response = $this->actingAs($user)->post('/anuncios', [
+        $response = $this->actingAs($anuncio)->post('/anuncios', [
             'titulo' => 'Teste',
             'preco' => '10',
             'estado' => 'Novo',
