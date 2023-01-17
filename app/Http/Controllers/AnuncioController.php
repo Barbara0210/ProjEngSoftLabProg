@@ -110,7 +110,16 @@ class AnuncioController extends Controller
      */
     public function update(Request $request, Anuncio $anuncio)
     {
+        $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',]); //validacao se e uma imagem
+
+        $name = $request->file('image')->getClientOriginalName();
+        $request->file('image')->store('public/images');
+    
+       
+        $anuncio->path = $request->file('image')->hashName();
         $anuncio->update($request->all());
+
         return redirect('/anuncios');
 
       //  $request->validate([

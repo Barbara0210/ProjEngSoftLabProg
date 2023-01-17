@@ -65,6 +65,7 @@ Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home
 
 Route::post('save',[PhotoController::class, 'store'])->name('upload.picture') -> middleware('is_admin');
  
+
 Route::get('/stripe',[StripeController::class,'index'])->name('index');
 Route::post('/stripe/checkout',[StripeController::class,'checkout'])->name('checkout');
 Route::get('/stripe/success',[StripeController::class,'success'])->name('success');
@@ -74,5 +75,5 @@ Route::post('stripe/checkout','App\HTTP\Controllers\StripeController@checkout')-
 Route::get('stripe/sucess','App\HTTP\Controllers\StripeController@success')->name('success');
 
 
-Route::get('generate-pdf',[PDFController::class,'generatePDF']);
+Route::get('admin/generate-pdf',[PDFController::class,'generatePDF'])-> middleware('is_admin');
 Auth::routes();

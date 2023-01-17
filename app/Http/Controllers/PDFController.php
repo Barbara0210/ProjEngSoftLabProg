@@ -14,9 +14,11 @@ class PDFController extends Controller
     public function generatePDF()
     {
         $user=User::all();
+        
         $data = [
-            'title' => 'Welcome to ItSolutionStuff.com',
-            'date' => date('m/d/Y')
+            'users'=>$user,
+            'title' => 'Lista de Utilizadores',
+            'date' => date('d/m/Y')
         ];
 
         $pdf = PDF::loadView('myPDF', $data);

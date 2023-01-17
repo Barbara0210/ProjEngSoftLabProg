@@ -16,10 +16,7 @@
 <div class="card-body">
               <!-- @include('partials.list') -->
                 </div>
-                <div class="card-body">
-                    <a href="generate-pdf" class="btn btn-secondary" > Gerar PDF</a>
-                </div>
-                <br> </br>
+               
                 <div class="card-body">
 
                     <a href="{{url('/anuncios')}}" class="btn btn-secondary">Ver lista de anuncios</a>

@@ -13,6 +13,10 @@
                      
                       
                      <a   href="{{url('/comentarios')}}" class="btn btn-secondary">{{ __('Gerir Comentarios') }}</a>
+                   
+                    <a href="generate-pdf" class="btn btn-secondary" > Gerar PDF com lista de Utilizadores</a>
+               
+                <br> </br>
 </div>
   
 
