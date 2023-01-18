@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 class AnuncioController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -20,10 +21,11 @@ class AnuncioController extends Controller
      */
     public function index()
     {
-      $anuncios= Anuncio::paginate(5);
+      $anuncios = Anuncio::paginate(5);
        return view('anuncios.index',compact('anuncios'));
-        //
+       
     }
+
    
     /**
      * Show the form for creating a new resource.
@@ -33,8 +35,9 @@ class AnuncioController extends Controller
     public function create()
     {
         return view( 'anuncios.create');
-        //
+
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -45,12 +48,7 @@ class AnuncioController extends Controller
     public function store(Request $request)
     {
 
-       // $request->validate([
-         //   'titulo' -> (nao e esta seta) 'required|min:2',
-//]);
-
-
-        $anuncio= new Anuncio;
+        $anuncio = new Anuncio;
         $anuncio->titulo = $request->titulo;
         $anuncio->preco = $request->preco;
         $anuncio->estado = $request->estado;
@@ -71,8 +69,6 @@ class AnuncioController extends Controller
         return redirect('/anuncios');
 
 
-
-        //
     }
 
     /**
@@ -84,7 +80,7 @@ class AnuncioController extends Controller
     public function show(Anuncio $anuncio)
     {
         return view('anuncios.show',['anuncio' => $anuncio]);
-        //
+     
     }
 
     
@@ -98,7 +94,7 @@ class AnuncioController extends Controller
     public function edit(Anuncio $anuncio)
     {
         return view('anuncios.edit',['anuncio' => $anuncio]);
-        //
+       
     }
 
     /**
@@ -122,15 +118,14 @@ class AnuncioController extends Controller
 
         return redirect('/anuncios');
 
-      //  $request->validate([
-          //  'titulo' => 'required',
-            //'preco' => 'required',
-            //'estado' => 'required',
+      // $request->validate([
+          // 'titulo' => 'required',
+            // 'preco' => 'required',
+            // 'estado' => 'required',
           //  'descricao' => 'required',
 
-     //   ]);
+     // ]);
 
-       
     }
 
     /**
@@ -141,7 +136,7 @@ class AnuncioController extends Controller
      */
     public function destroy(Anuncio $anuncio)
     {
-        //
+      
         $anuncio->delete();
         return redirect('/anuncios');
     }

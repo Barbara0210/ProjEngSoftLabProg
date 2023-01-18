@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
     class ComentarioController extends Controller
     {
+
+
         /**
          * Display a listing of the resource.
          *
@@ -14,16 +16,8 @@ use Illuminate\Http\Request;
          */
         public function index()
         {
-            //
-            $comentarios= Comentario::paginate(10);
+            $comentarios = Comentario::paginate(10);
             return view('comentarios.index',compact('comentarios'));
-        }
-
-        public function indexAdmin()
-        {
-            //
-            $comentarios= Comentario::paginate(5);
-            return view('comentarios.IndexAdmin',compact('comentarios'));
         }
 
         /**
@@ -33,9 +27,6 @@ use Illuminate\Http\Request;
          */
         public function create()
         {
-            //
-        
-
             return view( 'comentarios.create');
 
         }
@@ -48,10 +39,9 @@ use Illuminate\Http\Request;
          */
         public function store(Request $request)
         {
-            //
             $comentario= new Comentario;
             $comentario->descricao = $request->descricao;
-            $comentario->user_id= $request->user()->id;
+            $comentario->user_id = $request->user()->id;
             $comentario->save();
 
             return redirect('/comentarios');
@@ -65,7 +55,6 @@ use Illuminate\Http\Request;
          */
         public function show(Comentario $comentario)
         {
-            //
             return view('comentarios.show',['comentario' => $comentario]);
 
         }
@@ -80,7 +69,6 @@ use Illuminate\Http\Request;
         {
             return view('comentarios.edit',['comentario' => $comentario]);
 
-            //
         }
 
         /**
@@ -92,7 +80,6 @@ use Illuminate\Http\Request;
          */
         public function update(Request $request, Comentario $comentario)
         {
-            //
             $comentario->update($request->all());
             return redirect('/comentarios');
         }
@@ -107,6 +94,6 @@ use Illuminate\Http\Request;
         {
             $comentario->delete();
             return redirect('/comentarios');
-            //
+
         }
     }

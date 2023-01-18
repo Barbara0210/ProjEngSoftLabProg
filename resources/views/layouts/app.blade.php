@@ -44,11 +44,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                <h5>Marketplace</h5>
-                </a>
-
-                
+             
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -72,9 +68,22 @@
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                           
+                                  </li>
                             @endif
                         @else
+
+                      
+                        @if(Auth::user()->is_admin==0)
+                <a align= "left" class="navbar-brand" href="{{ url('/home') }}">
+                <h5>Marketplace</h5>
+                </a>
+                @endif
+              @if(Auth::user()->is_admin==1)
+                <a  align= "left" class="navbar-brand" href="{{ url('admin/home') }}">
+                <h5>Marketplace</h5>
+                </a>
+                @endif
                         <li class="nav-item">
                                     <a class="nav-link" href="{{url('/anuncios/create')}}">{{ __('Criar Anuncio') }}</a>
                         </li>
@@ -114,6 +123,9 @@
                             
                         @endguest
                     </ul>
+                      <div >       
+               
+                      </div> 
                 </div>
             </div>
         </nav>
